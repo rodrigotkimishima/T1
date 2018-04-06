@@ -33,22 +33,13 @@ char *Clean_S(char *string)
 
 char *Concatena_Path(char *dir, char *n_arq, char *n_arq_type)
 {
-	char *aux;
 	char *newfile;
 
-	newfile = Alloc_SI();
-	aux = newfile;
-	newfile = Concatena(newfile, dir);
-	free_c(aux);
-	aux = newfile;
-	newfile = Concatena(newfile, n_arq);
-	free_c(aux);
-	aux = newfile;
-	newfile = Concatena(newfile, ".");
-	free_c(aux);
-	aux = newfile;
-	newfile = Concatena(newfile, n_arq_type);
-	free_c(aux);
+	newfile = malloc((strlen(dir)+strlen(n_arq)+strlen(n_arq_type)+2)*sizeof(char));
+	strcat(newfile,dir);
+	strcat(newfile,n_arq);
+	strcat(newfile,".");
+	strcat(newfile,n_arq_type);
 	printf("%s\n",newfile);
 	return newfile;
 }
